@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a1e18">
+<title>شهداء قطاع غزة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== الصفحة الرئيسية ===== -->
+<div id="home" class="screen active">
+  <div class="home-container">
+    <div class="bismillah">﷽</div>
+    <h1 class="home-title">شهداء قطاع غزة</h1>
+    <p class="home-sub">القرآن • الأذكار • الأدعية</p>
+    <div class="home-cards">
+      <button class="home-card" onclick="goQuran()">
+        <span class="card-icon">📖</span>
+        <span class="card-text">القرآن الكريم</span>
+      </button>
+      <button class="home-card" onclick="goAzkar()">
+        <span class="card-icon">🤲</span>
+        <span class="card-text">الأذكار</span>
+      </button>
+      <button class="home-card" onclick="goDua()">
+        <span class="card-icon">🕌</span>
+        <span class="card-text">الأدعية</span>
+      </button>
+    </div>
+    <p class="dedication">رحم الله شهداءنا الأبرار وأسكنهم فسيح جناته</p>
+  </div>
+</div>
+
+<!-- ===== قائمة السور ===== -->
+<div id="quranList" class="screen">
+  <header class="topbar">
+    <button class="back-btn" onclick="goHome()">← رجوع</button>
+    <h2>القرآن الكريم</h2>
+    <div class="spacer"></div>
+  </header>
+  <div id="surahList" class="surah-list"></div>
+</div>
+
+<!-- ===== قراءة السورة ===== -->
+<div id="quranRead" class="screen">
+  <header class="topbar">
+    <button class="back-btn" onclick="backToSurahList()">← رجوع</button>
+    <h2 id="surahTitle">السورة</h2>
+    <div class="spacer"></div>
+  </header>
+
+  <div class="reader-controls">
+    <button id="playBtn" class="ctrl-btn play" onclick="togglePlay()">
+      <span id="playIcon">▶</span>
+      <span id="playText">تشغيل</span>
+    </button>
+    <select id="reciterSelect" class="ctrl-select" onchange="onReciterChange()">
+      <option value="yasser">الشيخ ياسر الدوسري</option>
+      <option value="lohaidan">الشيخ محمد اللحيدان</option>
+    </select>
+    <button id="saveBtn" class="ctrl-btn save" onclick="toggleBookmark()">
+      <span id="saveIcon">🔖</span>
+      <span id="saveText">حفظ</span>
+    </button>
+  </div>
+
+  <div class="page-nav-bar">
+    <button class="page-nav" id="prevBtn" onclick="prevPage()">◀ السابقة</button>
+    <span id="pageNum" class="page-num">1</span>
+    <button class="page-nav" id="nextBtn" onclick="nextPage()">التالية ▶</button>
+  </div>
+
+  <div id="ayahContainer" class="ayah-container"></div>
+</div>
+
+<!-- ===== قائمة الأذكار ===== -->
+<div id="azkarMenu" class="screen">
+  <header class="topbar">
+    <button class="back-btn" onclick="goHome()">← رجوع</button>
+    <h2>الأذكار</h2>
+    <div class="spacer"></div>
+  </header>
+  <div class="menu-list">
+    <button class="menu-item" onclick="openAzkar('morning')">🌅 أذكار الصباح</button>
+    <button class="menu-item" onclick="openAzkar('evening')">🌆 أذكار المساء</button>
+    <button class="menu-item" onclick="openAzkar('sleep')">🌙 أذكار ما قبل النوم</button>
+  </div>
+</div>
+
+<!-- ===== محتوى الأذكار ===== -->
+<div id="azkarContent" class="screen">
+  <header class="topbar">
+    <button class="back-btn" onclick="goAzkar()">← رجوع</button>
+    <h2 id="azkarTitle">الأذكار</h2>
+    <div class="spacer"></div>
+  </header>
+  <div id="azkarBody" class="content-body"></div>
+</div>
+
+<!-- ===== قائمة الأدعية ===== -->
+<div id="duaMenu" class="screen">
+  <header class="topbar">
+    <button class="back-btn" onclick="goHome()">← رجوع</button>
+    <h2>الأدعية</h2>
+    <div class="spacer"></div>
+  </header>
+  <div class="menu-list">
+    <button class="menu-item" onclick="openDua('general')">🤲 دعاء بشكل عام</button>
+    <button class="menu-item" onclick="openDua('quran')">📖 دعاء القرآن</button>
+    <button class="menu-item" onclick="openDua('rabita')">🔗 دعاء الرابطة</button>
+  </div>
+</div>
+
+<!-- ===== محتوى الأدعية ===== -->
+<div id="duaContent" class="screen">
+  <header class="topbar">
+    <button class="back-btn" onclick="goDua()">← رجوع</button>
+    <h2 id="duaTitle">الدعاء</h2>
+    <div class="spacer"></div>
+  </header>
+  <div id="duaBody" class="content-body"></div>
+</div>
+
+<script src="quran-data.js"></script>
+<script src="azkar-data.js"></script>
+<script src="dua-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
